@@ -1,0 +1,98 @@
+﻿@page "/counter"
+@rendermode InteractiveServer //Ginagamit ito para mag enable yun interactive server-side rendering sa blazor para maging interactive
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="()=>currentCount++">Click me</button>
+
+
+    
+@* The oninput -- HandleInput Method  => Change Event Arguments *@
+@* <div class="m-4">
+    <input type="text" @oninput="HandleInput" /> 
+    <p>@text</p>
+</div> *@
+
+
+@* The onmouseover -- MouseOver method => Mouse Event Arguments *@
+@* <div style="border: 1px solid black;" @onmouseover="MouseOver">
+    <p>@divText</p>
+</div> *@
+
+
+@* The onkeydown -- HandleKeyDown method => Keyboard Event Argument *@
+@* <div class="m-4">
+    <input type="text" @onkeydown="HandleKeyDown"/>
+    <p>@text</p>
+</div> *@
+
+
+@* The onfocus -- HandleFocus method => Focus Event Arguments
+The onblur - HandleBlur method => Focus Event Arguments *@
+
+@* <div class="m-4">
+    <input type="text" @onfocus="HandleFocus" @onblur="HandleBlur"/>
+    <p>@text</p>
+</div> *@
+
+@* The databinding *@
+<div class="m-4">
+    <input type="text" @bind="text" @bind:event="oninput" @bind:after="Search" />
+    <p>@text</p>
+</div>
+@result
+
+
+
+@code {
+    private int currentCount = 0;
+
+    string text = "";
+    string divText = "";
+    string result = "";
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+
+
+    private void HandleInput(ChangeEventArgs e)
+    {
+        text = (string)e.Value!;
+    }
+
+    private void MouseOver(MouseEventArgs e)
+    {
+        divText = "You are hovering the => MouseOverMethod";
+    }
+
+    private void HandleKeyDown(KeyboardEventArgs e)
+    {
+        text = (string)e.Key;
+    }
+
+    private void HandleFocus(FocusEventArgs e)
+    {
+        text = "You are typing...";
+    }
+
+    private void HandleBlur(FocusEventArgs e)
+    {
+        text = "Please type...";
+    }
+
+    async Task Search()
+    {
+        await Task.Delay(3000);
+        result = "150 results were found!";
+    }
+}
+
+
+

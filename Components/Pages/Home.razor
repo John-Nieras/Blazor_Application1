@@ -1,0 +1,35 @@
+﻿@page "/"
+<PageTitle>Home</PageTitle>
+
+<div class="home-page">
+    <header class="hero">
+        <h1>Welcome to Aces Credit Expert & Solutions</h1>
+        <p>Your trusted partner in financial success.</p>
+    </header>
+
+    <main class="content">
+        <section>
+            <h2>About Us</h2>
+            <p>
+                Conceptualized in 2017, Aces Credit Experts and Solutions Inc. (“ACES”) was born from a vision and the need to extend credit services to the underserved segments of financial institutions. With the diverse backgrounds of its principals in finance, accounting, sales, marketing and business development, coupled with an eagerness to blaze a trail in the industry, ACES was incorporated on April 27, 2018.
+                Despite being a new player in the lending industry, the company already boasts of a healthy portfolio in its first year of operations. The stockholders and Board of Directors are long-time partners in various businesses. Meanwhile, the management team is composed of young individuals accustomed to business with diverse educational backgrounds and work experiences.
+            </p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; @DateTime.Now.Year Aces Credit Expert & Solutions. All rights reserved.</p>
+    </footer>
+</div>
+
+@*<Counter/> => (plugging in the component Counter.razor*@
+
+@code {
+    private void LearnMore()
+    {
+        NavigationManager.NavigateTo("/about");
+    }
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+}
